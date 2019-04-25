@@ -22,6 +22,16 @@ class MyscrapydoubanPipeline(object):
         self.post = mydb[sheetname]
 
     def process_item(self, item, spider):
+        # 把item转化成字典形式
         data = dict(item)
+        # 向指定的表里添加数据 向数据库插入一条记录
         self.post.insert(data)
+        # 会在控制台输出原item数据，可以选择不写
         return item
+
+        # result = requests.get(item['img_url'])
+        # with open("E:\\img\\jiandan\\" + str(self.count) + ".jpg", 'wb') as f:
+        #     f.write(result.content)
+        #     f.close()
+        # self.count += 1
+        # return item

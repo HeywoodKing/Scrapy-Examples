@@ -16,6 +16,7 @@ class BioonSpider(scrapy.Spider):
     def parse(self, response):
         print("================================start==========================")
         print("开始抓取：", self.url_request)
+        self.logger.info('正在执行：', self.url_request)
         datas = response.xpath('//ul[@id="cms_list"]/li')
         for each in datas:
             item = MyscrapybioonItem()
@@ -32,7 +33,9 @@ class BioonSpider(scrapy.Spider):
 
             self.items.append(item)
 
+
         print("==============================end=============================")
+
 
         # 取10页的数据
         if self.offset < 1:

@@ -7,6 +7,9 @@
 from scrapy.exceptions import DropItem
 import json
 import codecs
+from scrapy.log import logger
+import scrapy
+from scrapy.mail import MailSender
 
 
 class MyscrapybioonPipeline(object):
@@ -36,5 +39,14 @@ class JsonWritePipeline(object):
             self.file.write(line)
             return item
 
+    # 重写了spider_closed方法，
+    # 添加发送邮件功能，当spider关闭时，邮件通知领导，并在邮件正文中添加spider的状态信息
+    # 读取crawler的状态信息，并添加到邮件正文中
     def spider_closed(self, spider):
         self.file.close()
+        # print("结束啦！")
+        # logger.info("结束啦！")
+
+        # mailer = MailSender()
+        # # mailer = MailSender.from_settings(settings)
+        # mailer.send(to=["opencoding@hotmail.com"], subject="Some Subject", body="Some body", cc=["another@hotmail.com"])

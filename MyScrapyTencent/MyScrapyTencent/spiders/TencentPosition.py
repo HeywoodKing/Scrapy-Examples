@@ -41,6 +41,6 @@ class TencentpositionSpider(scrapy.Spider):
         if self.offset < 1680:
             self.offset += 10
 
-        # 每次处理完一页的数据之后，重新发送下一页页面请求
-        # self.offset自增10，同时拼接为新的url，并调用回调函数self.parse处理Response
-        yield scrapy.Request(self.url + str(self.offset), callback=self.parse)
+            # 每次处理完一页的数据之后，重新发送下一页页面请求
+            # self.offset自增10，同时拼接为新的url，并调用回调函数self.parse处理Response
+            yield scrapy.Request(self.url + str(self.offset), callback=self.parse)

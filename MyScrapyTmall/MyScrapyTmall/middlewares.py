@@ -101,3 +101,14 @@ class MyscrapytmallDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+# 爬取中间件代理
+class ProxySpiderMiddleware(object):
+    def process_request(self, request, spider):
+        pass
+
+# 下载中间件代理
+class ProxyDownloaderMiddleware(object):
+    def process_request(self, request, spider):
+        pass

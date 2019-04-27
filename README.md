@@ -1,18 +1,49 @@
 爬虫框架Scrapy Demo
 
 python3.7.1
+
 pip19.0.3
+
 Scrapy1.6.0
+
 scrapyd1.2.0
+
 scrapyd-client1.1.0
+
 selenium3.141.0
+
 pillow5.3.0
+
 Twisted19.2.0
+
 pyecharts0.5.11
+
 pymongo3.8.0
+
 virtualenv16.4.0
 
+All Demo:
+
+1.爬取生物谷文章列表+详情
+
+2.爬取豆瓣影评得分
+
+3.爬取新浪新闻+详情
+
+4.爬取StackOverFlow站问题+star数量
+
+5.爬取腾讯社招信息（使用rules规则爬取1页的数据）
+
+6.爬取腾讯社招信息（爬取多页数据）
+
+7.爬取西刺IP代理数据
+
+8.爬取天猫商城商品信息
+
+
+
 使用scrapyd部署爬虫
+
 1.安装scrapyd
 pip install scrapyd
 
@@ -44,18 +75,3 @@ curl http://localhost:6800/listprojects.json
 
 
 
-1.爬取生物谷文章列表+详情
-
-2.爬取豆瓣影评得分
-
-3.爬取新浪新闻+详情
-
-4.爬取StackOverFlow站问题+star数量
-
-5.爬取腾讯社招信息（使用rules规则爬取1页的数据）
-
-6.爬取腾讯社招信息（爬取多页数据）
-
-7.爬取西刺IP代理数据
-
-8.爬取天猫商城商品信息

@@ -8,12 +8,31 @@ class StackoverflowSpider(scrapy.Spider):
     allowed_domains = ['stackoverflow.com']
     start_urls = ['http://stackoverflow.com/questions?sort=votes']
 
-    def parse(self, response):
-        for href in response.css('.question-summary h3 a::attr(href)'):
-            full_url = response.urljoin(href.extract())
-            yield scrapy.Request(full_url, callback=self.parse_question)
+    # def start_requests(self):
+    #     url = 'http://stackoverflow.com'
+    #     cookies = {
+    #         'dz_username': 'wst_today',
+    #         'dz_uid': '1322052',
+    #         'buc_key': '',
+    #         'buc_token': ''
+    #     }
+    #
+    #     return [
+    #         scrapy.Request(url, cookies=cookies),
+    #     ]
 
-    def parse_question(self, response):
+    def parse(self, response):
+        # 这里可以检查是否登陆成功
+        # ele = response.xpath('//table[@class="table table-striped"]/thead/tr/th[1]/text()').extract()
+        # if ele:
+        #     print('success')
+
+        datas = response.css('.question-summary h3 a::attr(href)')
+        for href in datas:
+            full_url = response.urljoin(href.extract())
+            yield scrapy.Request(full_url, callback=self.question_parse)
+
+    def question_parse(self, response):
         item = MyscrapystackoverflowItem()
         # // *[ @ class = "question-summary"]
         item['title'] = response.css('h1 a::text').extract()[0]

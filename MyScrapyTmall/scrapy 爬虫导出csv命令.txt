@@ -1,0 +1,2 @@
+scrapy list
+scrapy crawl tmallgoods -o tmallgoods_result.csv

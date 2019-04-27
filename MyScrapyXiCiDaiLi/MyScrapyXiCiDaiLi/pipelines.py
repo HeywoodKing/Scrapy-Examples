@@ -8,7 +8,7 @@ import pymongo
 from scrapy.conf import settings
 
 
-class MyscrapyxicidailiPipeline(object):
+class MongodbPipeline(object):
     def __init__(self):
         host = settings['MONGODB_HOST']
         port = settings['MONGODB_PORT']
@@ -26,3 +26,25 @@ class MyscrapyxicidailiPipeline(object):
         data = dict(item)
         self.post.insert(data)
         return item
+
+
+# class MysqlPipeline(object):
+#     def process_item(self, item, spider):
+#         DBKWARGS = spider.settings.get('DBKWARGS')
+#         conn = MySQLdb.connect(**DBKWARGS)
+#         cur = conn.cursor()
+#         sql = ("insert into proxy(COUNTRY, COUNTRY_IMG, IP, PROT, proxy_type, SERVER_ADDR, SPEED, is_anonymous, connect_time, keep_alive_time, verify_time) "
+#                "values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+#         lis = (item['country'], item['country_img'], item['ip'], item['port'], item['proxy_type'], item['server_addr'], item['speed'],
+#                item['is_anonymous'], item['connect_time'], item['keep_alive_time'], item['verify_time'])
+#         try:
+#             cur.execute(sql, lis)
+#         except Exception as e:
+#             print("Insert error:", e)
+#             conn.rollback()
+#         else:
+#             conn.commit()
+#
+#         cur.close()
+#         conn.close()
+#         return item

@@ -8,8 +8,7 @@
 from scrapy import signals
 
 
-# 爬取蜘蛛中间件
-class MyscrapyxicidailiSpiderMiddleware(object):
+class MyscrapytmallSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
     # passed objects.
@@ -57,8 +56,7 @@ class MyscrapyxicidailiSpiderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-# 下载器中间件
-class MyscrapyxicidailiDownloaderMiddleware(object):
+class MyscrapytmallDownloaderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.

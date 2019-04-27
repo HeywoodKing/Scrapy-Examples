@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for MyScrapyXiCiDaiLi project
+# Scrapy settings for MyScrapyTmall project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,18 +9,17 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'MyScrapyXiCiDaiLi'
+BOT_NAME = 'MyScrapyTmall'
 
-SPIDER_MODULES = ['MyScrapyXiCiDaiLi.spiders']
-NEWSPIDER_MODULE = 'MyScrapyXiCiDaiLi.spiders'
+SPIDER_MODULES = ['MyScrapyTmall.spiders']
+NEWSPIDER_MODULE = 'MyScrapyTmall.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'MyScrapyXiCiDaiLi (+http://www.yourdomain.com)'
-USER_AGENT = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;"
+#USER_AGENT = 'MyScrapyTmall (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -48,14 +47,15 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'MyScrapyXiCiDaiLi.middlewares.MyscrapyxicidailiSpiderMiddleware': 543,
+#    'MyScrapyTmall.middlewares.MyscrapytmallSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'MyScrapyXiCiDaiLi.middlewares.MyscrapyxicidailiDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    # 'MyScrapyTmall.middlewares.MyscrapytmallDownloaderMiddleware': 543,
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 301,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -66,7 +66,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'MyScrapyXiCiDaiLi.pipelines.MongodbPipeline': 300,
+   # 'MyScrapyTmall.pipelines.MyscrapytmallPipeline': 300,
+    'scrapy.pipelines.images.ImagesPipeline': 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -90,11 +91,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# MONGODB 主机名
-MONGODB_HOST = "127.0.0.1"
-# MONGODB 端口号
-MONGODB_PORT = 27017
-# 数据库名称
-MONGODB_DBNAME = "XiCi"
-# 存放数据的表名
-MONGODB_SHEETNAME = "XiCiDaiLi"
+LOG_FILE = "tmallgoods_scrapy.log"
+
+IMAGES_URLS_FIELD = 'file_urls'
+IMAGES_STORE = R'.'

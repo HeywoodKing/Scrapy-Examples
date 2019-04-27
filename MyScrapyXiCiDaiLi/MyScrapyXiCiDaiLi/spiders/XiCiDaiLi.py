@@ -35,8 +35,10 @@ class XicidailiSpider(scrapy.Spider):
             item['server_addr'] = server_addr[0] if server_addr else None
             item['is_anonymous'] = each.xpath('./td[5]/text()').extract()[0]
             item['proxy_type'] = each.xpath('./td[6]/text()').extract()[0]
-            item['speed'] = each.xpath('./td[7]/div[@class="bar"]/@title').extract()[0]
-            item['connect_time'] = each.xpath('./td[8]/div[@class="bar"]/@title').extract()[0]
+            # item['speed'] = each.xpath('./td[7]/div[@class="bar"]/@title').extract()[0]
+            item['speed'] = each.xpath('./td[7]/div[@class="bar"]/@title').re('\d{0,2}\.\d{0,}')[0]
+            # item['connect_time'] = each.xpath('./td[8]/div[@class="bar"]/@title').extract()[0]
+            item['connect_time'] = each.xpath('./td[8]/div[@class="bar"]/@title').re('\d{0,2}\.\d{0,}')[0]
             item['keep_alive_time'] = each.xpath('./td[9]/text()').extract()[0]
             item['verify_time'] = each.xpath('./td[10]/text()').extract()[0]
 

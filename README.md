@@ -1,6 +1,6 @@
 # 爬虫框架Scrapy Demo
 
-##依赖库
+## 依赖库
 ```
 python3.7.1
 pip19.0.3
@@ -15,7 +15,7 @@ pymongo3.8.0
 virtualenv16.4.0
 ```
 
-##All Demo:
+## All Demo:
 * 爬取生物谷文章列表+详情
 * 爬取豆瓣影评得分
 * 爬取新浪新闻+详情

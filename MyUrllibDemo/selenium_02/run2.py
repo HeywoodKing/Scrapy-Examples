@@ -42,7 +42,6 @@ try:
     可以看到我们已经有了一个代理服务器，端口号为 8081，现在我们就可以使用 127.0.0.1:8081 这个代理了
     """
 
-
     browser = webdriver.Chrome(executable_path=r'E:/Python/webdriver/chromedriver.exe',
                                chrome_options=chrome_options)
     browser.get(url_s)

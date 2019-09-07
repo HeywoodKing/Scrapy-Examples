@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+scrapy = "*"
+twisted = "*"
+pywin32 = "*"
+
+[packages]
+twisted = {path = "E:/Python/Twisted-19.2.1-cp37-cp37m-win_amd64.whl"}
+
+[requires]
+python_version = "3.7"
